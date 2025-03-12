@@ -9,7 +9,7 @@ from paymentwithpaysatck, we wrote the two lines of code below */
 
 import dynamic from "next/dynamic";
 
-const paystackDynamic = dynamic(() => import("./PaymentWithPaystack"), {
+const PaystackDynamic = dynamic(() => import("./PaymentWithPaystack"), {
   ssr: false,
 });
 
@@ -61,7 +61,7 @@ const CheckOutForm = () => {
         className="p-2 w-full border border-amber-500 rounded-md focus:outline focus:outline-amber-800"
       />
       {/* here was changed from paymentwithpaystack to paystackdynamic */}
-      <paystackDynamic customerDetails={customerDetails} />
+      <PaystackDynamic customerDetails={customerDetails} />
     </form>
   );
 };
