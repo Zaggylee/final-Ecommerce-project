@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 /* to upload to vercel we had the window no defined error, because paystack was
 uso=ing window which contradicts next.js, so instead of import paymentwithpaystack
 from paymentwithpaysatck, we wrote the two lines of code below */
+
 import dynamic from "next/dynamic";
 
 const paystackDynamic = dynamic(() => import("./PaymentWithPaystack"), {
@@ -59,8 +60,8 @@ const CheckOutForm = () => {
         placeholder="Delivery Address"
         className="p-2 w-full border border-amber-500 rounded-md focus:outline focus:outline-amber-800"
       />
-
-      <PaymentWithPaystack customerDetails={customerDetails} />
+      {/* here was changed from paymentwithpaystack to paystackdynamic */}
+      <paystackDynamic customerDetails={customerDetails} />
     </form>
   );
 };
