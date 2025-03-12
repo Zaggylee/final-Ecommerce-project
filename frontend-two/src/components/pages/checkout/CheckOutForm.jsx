@@ -2,7 +2,15 @@
 import React, { useState } from "react";
 import { redirect } from "next/navigation";
 import { useSelector } from "react-redux";
-import PaymentWithPaystack from "./PaymentWithPaystack";
+
+/* to upload to vercel we had the window no defined error, because paystack was
+uso=ing window which contradicts next.js, so instead of import paymentwithpaystack
+from paymentwithpaysatck, we wrote the two lines of code below */
+import dynamic from "next/dynamic";
+
+const paystackDynamic = dynamic(() => import("./PaymentWithPaystack"), {
+  ssr: false,
+});
 
 const CheckOutForm = () => {
   const [customerDetails, setCustomerDetails] = useState({
