@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import validator from "validator";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { SERVER_URL } from "@/utils/helper";
 
 const PaymentWithPaystack = ({ customerDetails }) => {
   const { totalCost, cartItems } = useSelector((state) => state.cart);
@@ -28,7 +29,10 @@ const PaymentWithPaystack = ({ customerDetails }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/v1/order/create",
+        /*the server url created in utils helper.js is then used here to enable the 
+        server run on both our localhost and also the deployed link*/
+
+        `${SERVER_URL}/api/v1/order/create`,
         {
           reference: reference,
           totalCost: totalCost,
