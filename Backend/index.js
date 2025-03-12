@@ -6,7 +6,8 @@ import { CONNECT_DATABASE } from "./config/database.js";
 
 dotenv.config();
 const app = express();
-const PORT = 3001;
+//thid process.env.port was adding so the hosting platform can use it
+const PORT = process.env.PORT || 3001;
 
 //this has to come before any route definition
 app.use(cors());
